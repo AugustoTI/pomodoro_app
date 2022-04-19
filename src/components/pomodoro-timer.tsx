@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useInterval } from '../hooks/use-interval';
-import { secondToTime } from '../utils/second-to-time';
+import { Button } from './button';
+import { Timer } from './timer';
 
 interface Props {
   defaultPomodoroTime: number;
@@ -11,11 +12,19 @@ export function PomodoroTimer(props: Props) {
 
   useInterval(() => {
     setMainTimer(mainTimer - 1);
-  }, 2000);
+  }, 1000);
 
   return (
     <>
-      <h1>Isso é um Pomodoro: {secondToTime(mainTimer)}</h1>
+      <div className="pomodoro">
+        <h2>You are: Working</h2>
+        <Timer mainTimer={mainTimer} />
+        <Button
+          text="teste"
+          className="pomodoro-btn"
+          onClick={() => console.log('testando')}
+        />
+      </div>
     </>
   );
 }

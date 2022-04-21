@@ -4,11 +4,14 @@ import { Button } from './button';
 import { Timer } from './timer';
 
 interface Props {
-  defaultPomodoroTime: number;
+  pomodoroTime: number;
+  shortRestTime: number;
+  longRestTime: number;
+  cycles: number;
 }
 
 export function PomodoroTimer(props: Props) {
-  const [mainTimer, setMainTimer] = useState(props.defaultPomodoroTime);
+  const [mainTimer, setMainTimer] = useState(props.pomodoroTime);
 
   useInterval(() => {
     setMainTimer(mainTimer - 1);
@@ -19,11 +22,30 @@ export function PomodoroTimer(props: Props) {
       <div className="pomodoro">
         <h2>You are: Working</h2>
         <Timer mainTimer={mainTimer} />
-        <Button
-          text="teste"
-          className="pomodoro-btn"
-          onClick={() => console.log('testando')}
-        />
+        <div className="controls">
+          <Button
+            text="teste"
+            className="pomodoro-btn"
+            onClick={() => console.log('testando')}
+          />
+          <Button
+            text="teste"
+            className="pomodoro-btn"
+            onClick={() => console.log('testando')}
+          />
+          <Button
+            text="teste"
+            className="pomodoro-btn"
+            onClick={() => console.log('testando')}
+          />
+        </div>
+
+        <div className="details">
+          <p>Lorem ipsum dolor sit amet.</p>
+          <p>Lorem ipsum dolor sit amet.</p>
+          <p>Lorem ipsum dolor sit amet.</p>
+          <p>Lorem ipsum dolor sit amet.</p>
+        </div>
       </div>
     </>
   );
